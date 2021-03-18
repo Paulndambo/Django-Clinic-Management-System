@@ -1,0 +1,54 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block heading %}
+<div class="container" style="background-color: rgb(231, 221, 221);">
+       <div class="row mx-auto">
+        <div class="col-4 mt-5 mx-auto">
+            <h1>Drugs</h1>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="{% url 'add_drug' %}" class="btn btn-secondary">Add A Drug</a>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="/" class="btn btn-warning">Back Home</a>
+        </div>
+    </div>
+    <hr>
+</div>
+ 
+{% endblock heading %}
+<hr>
+
+{% block content %}
+<div class="container" style="background-color: rgb(231, 221, 221);">
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Drug Name</td>
+            <td>Manufacturer</td>
+            <td>Supplier</td>
+            <td>Edit</td>
+            <td>Delete</td>
+            <td>Details</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for drug in drugs %}
+           <tr>
+               <td>{{ drug.drug_name }}</td>
+               <td>{{ drug.manufacturer }}</td>
+               <td>{{ drug.supplied_by }}</td>
+            
+               <td><a href="{% url 'edit_drug' drug.id %}" class="btn btn-success">Edit</a></td>
+               <td><a href="#" class="btn btn-danger">Delete</a></td>
+               <td><a href="{% url 'drug_details' drug.id %}" class="btn btn-secondary">Details</a></td>
+           </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block heading %}
+<div class="container" style="background-color: rgb(231, 221, 221);">
+    <div class="row mx-auto">
+        <div class="col-4 mt-5 mx-auto">
+            <h1>Health Bills</h1>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="{% url 'add_bill' %}" class="btn btn-secondary">Add A Bill</a>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="/" class="btn btn-warning">Back Home</a>
+        </div>
+    </div>
+</div>
+    <hr>
+{% endblock heading %}
+
+<hr>
+{% block content %}
+<div class="container" style="background-color: rgb(231, 221, 221);">
+ <table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Patient Name</td>
+            <td>Amount</td>
+            <td>Payment Date</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for bill in bills %}
+           <tr>
+               <td>{{ bill.patient }}</td>
+               <td>{{ bill.amount }}</td>
+               <td>{{ bill.payment_date }}</td>
+
+               <td><a href="{% url 'edit_bill' bill.id %}" class="btn btn-success">Edit</a></td>
+               <td><a href="#" class="btn btn-danger">Delete</a></td>
+           </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+{% endblock content %}

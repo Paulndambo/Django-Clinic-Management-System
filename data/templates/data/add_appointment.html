@@ -1,0 +1,38 @@
+{% extends "base_layout.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4 mt-5 mx-auto">
+            <a href="/" class="btn btn-secondary">Back Home</a>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="{% url 'appointments' %}" class="btn btn-warning">Back To Appointments</a>
+        </div>
+        </div>
+        <div class="col-md-12 mt-5">
+            <div class="jumbotron">
+                <h4 class="display-4 text-center">Add New Appointment</h4>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    
+                    <br>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <button type="submit" class="btn btn-success btn-block btn-lg">Submit</button>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{% url 'appointments' %}" class="btn btn-secondary btn-block btn-lg">
+                                Back to Appointments
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

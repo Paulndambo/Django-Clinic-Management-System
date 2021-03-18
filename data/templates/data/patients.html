@@ -1,0 +1,51 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block heading %}
+<div class="container" style="background-color: rgb(231, 221, 221);">
+    <div class="row mx-auto">
+        <div class="col-4 mt-5 mx-auto">
+            <h1>Patients</h1>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="{% url 'add_patient' %}" class="btn btn-secondary">Add A Patient</a>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="/" class="btn btn-warning">Back Home</a>
+        </div>
+    </div>
+{% endblock heading %}
+<hr>
+{% block content %}
+<hr>
+<div class="container" style="background-color: rgb(231, 221, 221);">
+    <table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Patient Name</td>
+            <td>ID Number</td>
+            <td>Date Recorded</td>
+            <td>Edit</td>
+            <td>Delete</td>
+            <td>Details</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for patient in patients %}
+           <tr>
+               <td>{{ patient.name }}</td>
+               <td>{{ patient.id_number }}</td>
+               <td>{{ patient.date_recorded }}</td>
+
+               <td><a href="{% url 'edit_patient' patient.id %}" class="btn btn-success">Edit</a></td>
+               <td><a href="#" class="btn btn-danger">Delete</a></td>
+               <td><a href="{% url 'patient_details' patient.id %}" class="btn btn-secondary">Details</a></td>
+           </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+{% endblock content %}

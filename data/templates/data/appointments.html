@@ -1,0 +1,51 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block heading %}
+<div class="container" style="background-color: rgb(231, 221, 221);">
+    <div class="row mx-auto">
+        <div class="col-4 mt-5 mx-auto">
+            <h1>Appointments</h1>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="{% url 'add_appointment' %}" class="btn btn-secondary">Add Appointment</a>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="/" class="btn btn-warning">Back Home</a>
+        </div>
+    </div>
+</div>
+    <hr>
+{% endblock heading %}
+<hr>
+{% block content %}
+<hr class="height-3">
+<div class="container" style="background-color: rgb(231, 221, 221);">
+ <table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Name</td>
+            <td>Date Requested</td>
+            <td>Approved</td>
+            <td>Edit</td>
+            <td>Delete</td>
+            <td>Details</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for appointment in appointments %}
+           <tr>
+               <td>{{ appointment.name }}</td>
+               <td>{{ appointment.date_requested }}</td>
+               <td>{{ appointment.approved }}</td>
+
+               <td><a href="{% url 'edit_appointment' appointment.id %}" class="btn btn-success">Edit</a></td>
+               <td><a href="#" class="btn btn-danger">Delete</a></td>
+               <td><a href="{% url 'appointment_details' appointment.id %}" class="btn btn-secondary">Details</a></td>
+           </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock content %}

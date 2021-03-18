@@ -1,0 +1,25 @@
+img{
+    width: 100%;
+}
+
+.errorlist li{
+    padding: 10px;
+    list-style-type: none;
+    border: 1px solid #FF5722;
+    margin: 10px 0;
+    color: #FF5722
+}
+
+.errorlist{
+    padding: 0;
+}
+
+span.helptext {
+    display: block;
+}
+
+body {
+    min-height: 75rem;
+    padding-top: 4.5rem;
+  }
+  

@@ -1,0 +1,47 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block heading %}
+<div class="container" style="background-color: rgb(231, 221, 221);">
+    <div class="row mx-auto">
+        <div class="col-4 mt-5 mx-auto">
+            <h1>Health Histories</h1>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="{% url 'add_health_history' %}" class="btn btn-secondary">Add Health History</a>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="/" class="btn btn-warning">Back Home</a>
+        </div>
+    </div>
+</div>
+    <hr>
+{% endblock heading %}
+<hr>
+{% block content %}
+<div class="container" style="background-color: rgb(231, 221, 221);">
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Patient Name</td>
+            <td>Health History</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for health_history in health_histories %}
+           <tr>
+               <td>{{ health_history.patient }}</td>
+               <td>{{ health_history.history }}</td>
+               
+               <td><a href="{% url 'edit_health_history' health_history.id %}" class="btn btn-success">Edit</a></td>
+               <td><a href="#" class="btn btn-danger">Delete</a></td>
+           </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-5 mx-auto" style="background-color: rgb(231, 221, 221);">
+            <code>
+            <h3 class="text-center m-3"><i>Drug Profile</i></h3>
+            </code>
+            <h4 class="text-center">Drug Name: {{ drug.drug_name }}</h4>
+            <h6 class="text-center">Drug Code: {{ drug.drug_code}}</h6>
+            <h6 class="text-center">Drug Number: {{ drug.drug_name}}</h6>
+            <h6 class="text-center">Manufacturer: {{ drug.manufacturer }}</h6>
+            <h6 class="text-center">Supplier: {{ drug.supplied_on }}</h6>
+            <h6 class="text-center">Supply Date: {{ drug.supplied_on }}</h6>
+            <h6 class="text-center">Supply Unit: {{ drug.supply_unit}}</h6>
+            <h6 class="text-center">Supply Quantity: {{ drug.quantity}}</h6>
+            <h6 class="text-center">Unit Price: {{ drug.unit_price }}</h6>
+            <h6 class="text-center">Date Recorded: {{ drug.date_recorded }}</h6>
+            <hr>
+
+            <div class="row mx-auto">
+            <div class="col-4 mt-5 mx-auto m-5">
+                <a href="{% url 'drugs' %}" class="btn btn-secondary">Back To Drugs</a>
+            </div>
+            <div class="col-4 mt-5 mx-auto m-5">
+                <a href="{% url 'add_drug' %}" class="btn btn-secondary">Add New Drug</a>
+            </div>
+            <div class="col-4 mt-5 mx-auto m-5">
+                <a href="/" class="btn btn-secondary">Back Home</a>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+</div>
+    
+  
+{% endblock %}

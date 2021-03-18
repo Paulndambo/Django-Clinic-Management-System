@@ -1,0 +1,31 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8 mt-5 mx-auto" style="background-color: rgb(231, 221, 221);">
+            <code>
+            <h3 class="text-center m-3"><i>Patient Profile</i></h3>
+            </code>
+            <h4 class="text-center">Patient Name: {{ patient.name }}</h4>
+            <h6 class="text-center">Phone Number: {{ patient.phone }}</h6>
+            <h6 class="text-center">ID Number: {{ patient.id_number }}</h6>
+            <h6 class="text-center">Email Address: {{ patient.email }}</h6>
+            <h6 class="text-center">Date Recorded: {{ patient.date_recorded }}</h6>
+            <hr>
+
+            <div class="row mx-auto">
+            <div class="col-4 mt-5 mx-auto m-5">
+                <a href="{% url 'patients' %}" class="btn btn-secondary">Back To Patients</a>
+            </div>
+            <div class="col-4 mt-5 mx-auto m-5">
+                <a href="{% url 'add_patient' %}" class="btn btn-secondary">Add New Patient</a>
+            </div>
+            <div class="col-4 mt-5 mx-auto m-5">
+                <a href="/" class="btn btn-secondary">Back Home</a>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+  
+{% endblock %}

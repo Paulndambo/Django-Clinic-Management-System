@@ -1,0 +1,34 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8 mt-5 mx-auto" style="background-color: rgb(231, 221, 221);">
+            <code>
+            <h3 class="text-center m-3"><i>Appointment Details</i></h3>
+            </code>
+            <h4 class="text-center">Name: {{ appointment.name }}</h4>
+            <h6 class="text-center">ID Number: {{ appointment.id_number}}</h6>
+            <h6 class="text-center">Phone Number: {{ appointment.phone }}</h6>
+            <h6 class="text-center">Email Address: {{ appointment.email }}</h6>
+            <h6 class="text-center">Gender: {{ appointment.gender }}</h6>
+            <h6 class="text-center">Description: {{ appointment.description}}</h6>
+            <h6 class="text-center">Date Requested: {{ appointment.date_requested }}</h6>
+            <h6 class="text-center">Approval Status: {{ appointment.approved }}</h6>
+            <hr>
+
+            <div class="row mx-auto">
+            <div class="col-4 mt-5 mx-auto m-5">
+                <a href="{% url 'appointments' %}" class="btn btn-secondary">Back To Appointments</a>
+            </div>
+            <div class="col-4 mt-5 mx-auto m-5">
+                <a href="{% url 'add_appointment' %}" class="btn btn-secondary">Add New Appointment</a>
+            </div>
+            <div class="col-4 mt-5 mx-auto m-5">
+                <a href="/" class="btn btn-secondary">Back Home</a>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+  
+{% endblock %}

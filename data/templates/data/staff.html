@@ -1,0 +1,49 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block heading %}
+<div class="container" style="background-color: rgb(231, 221, 221);">
+    <div class="row mx-auto">
+        <div class="col-4 mt-5 mx-auto">
+            <h1>Staff Members</h1>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="{% url 'add_staff' %}" class="btn btn-secondary">Add Staff Member</a>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="/" class="btn btn-warning">Back Home</a>
+        </div>
+    </div>
+</div>
+{% endblock heading %}
+<hr>
+{% block content %}
+<hr class="height-3">
+<div class="container" style="background-color: rgb(231, 221, 221);">
+ <table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Staff Name</td>
+            <td>Position</td>
+            <td>Date Employed</td>
+            <td>Edit</td>
+            <td>Delete</td>
+            <td>Details</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for staff in staffs %}
+           <tr>
+               <td>{{ staff.name }}</td>
+               <td>{{ staff.position }}</td>
+               <td>{{ staff.employment_date }}</td>
+               <td><a href="{% url 'edit_staff' staff.id %}" class="btn btn-success">Edit</a></td>
+               <td><a href="#" class="btn btn-danger">Delete</a></td>
+               <td><a href="{% url 'staff_details' staff.id %}" class="btn btn-secondary">Details</a></td>
+           </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock content %}

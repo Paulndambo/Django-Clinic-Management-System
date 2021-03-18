@@ -1,0 +1,49 @@
+{% extends "base_layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block heading %}
+<div class="container" style="background-color: rgb(231, 221, 221);">
+    <div class="row mx-auto">
+        <div class="col-4 mt-5 mx-auto">
+            <h1>Prescriptions</h1>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="{% url 'add_prescription' %}" class="btn btn-secondary">Add Prescription</a>
+        </div>
+        <div class="col-4 mt-5 mx-auto">
+            <a href="/" class="btn btn-warning">Back Home</a>
+        </div>
+    </div>
+</div>
+    <hr>
+{% endblock heading %}
+<hr>
+{% block content %}
+<div class="container" style="background-color: rgb(231, 221, 221);">
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Patient Name</td>
+            <td>Prescribed Drug</td>
+            <td>Edit</td>
+            <td>Delete</td>
+            <td>Details</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for prescription in prescriptions %}
+           <tr>
+               <td>{{ prescription.patient }}</td>
+               <td>{{ prescription.prescribed_drug }}</td>
+
+               <td><a href="{% url 'edit_prescription' prescription.id %}" class="btn btn-success">Edit</a></td>
+               <td><a href="#" class="btn btn-danger">Delete</a></td>
+               <td><a href="{% url 'prescription_details' prescription.id %}" class="btn btn-secondary">Details</a></td>
+           </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+{% endblock content %}
