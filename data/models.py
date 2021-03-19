@@ -25,7 +25,7 @@ class BaseInfo(models.Model):
     gender = models.CharField(max_length=20, choices=GENDER_CHOICES)
     phone = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
-    image = models.ImageField(upload_to="pics/", null=True)
+    
 
     class Meta:
         abstract = True
