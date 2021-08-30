@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from . serializers import ArticleSerializer
+from . serializers import ArticleSerializer, BirthdaySerializer
 
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
@@ -14,11 +14,16 @@ from rest_framework import viewsets
 from django.shortcuts import get_object_or_404
 
 from . models import Article
+from birthday.models import Birthday
 # Create your views here.
 #Model Viewsets
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
+
+class BirthdayViewSet(viewsets.ModelViewSet):
+    queryset = Birthday.objects.all()
+    serializer_class = BirthdaySerializer
 
 
 """

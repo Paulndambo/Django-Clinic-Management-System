@@ -2,6 +2,12 @@ from django.shortcuts import render, redirect
 from . models import Staff, PatientVisit, Patient, PatientBill, PatientFeedback, HealthHistory
 from . forms import Drug, Supplier, Appointment, VisitForm, FeedbackForm, HistoryForm, Prescription, StaffForm, PatientForm, SupplierForm, BillForm, DrugForm, AppointmentForm, PrescriptionForm
 
+from django.shortcuts import render, redirect
+
+from django.contrib.auth.models import User, auth
+from django.contrib import messages
+from django.urls import reverse_lazy
+
 def index(request):
     return render(request, "index.html")
 
@@ -281,3 +287,25 @@ def feedback_details(request, id):
         "feedback": feedback
     }
     return render(request, "data/feedback_details.html", context)
+
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            return redirect("index")
+        else:
+            messages.info(request, 'invalid creditials')
+            return redirect('login')
+    else:
+        return render(request, 'login.html')
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect("login")

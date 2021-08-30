@@ -25,7 +25,7 @@ SECRET_KEY = '*p9mq=82xq)gc=uq_!3rpso%ci0glqr!7!+jc!n@^w!zv(acbo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["kadabo-clinic-system.herokuapp.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'api',
+    'corsheaders',
+    'birthday',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -134,4 +136,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
 

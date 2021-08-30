@@ -15,6 +15,10 @@ urlpatterns = [
     path("bills/", views.bills, name="bills"),
     path("visits/", views.visits, name="visits"),
 
+    #Authentication
+    path("login/", views.login, name="login"),
+    path("logout/", views.logout, name="logout"),
+
     #Inserting Data
     path("add_appointment/", views.add_appointment, name="add_appointment"),
     path("add_bill/", views.add_bill, name="add_bill"),

@@ -1,5 +1,5 @@
 {% extends "base_layout.html" %}
-
+{% if user.is_authenticated %}
 {% block content %}
     <div class="row">
         <div class="col-md-8 mt-5 mx-auto" style="background-color: rgb(231, 221, 221);">
@@ -30,5 +30,8 @@
         </div>
         
     </div>
-  
+ 
 {% endblock %}
+    {% else %}
+    {% include "login1.html" %}
+{% endif %}

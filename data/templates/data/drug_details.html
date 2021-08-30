@@ -1,5 +1,5 @@
 {% extends "base_layout.html" %}
-
+{% if user.is_authenticated %}
 {% block content %}
 <div class="container">
     <div class="row">
@@ -34,6 +34,8 @@
         
     </div>
 </div>
-    
   
 {% endblock %}
+       {% else %}
+    {% include "login1.html" %}
+{% endif %}
