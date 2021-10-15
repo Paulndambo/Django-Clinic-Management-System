@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from . models import Staff, PatientVisit, Patient, PatientBill, PatientFeedback, HealthHistory
 from . forms import Drug, Supplier, Appointment, VisitForm, FeedbackForm, HistoryForm, Prescription, StaffForm, PatientForm, SupplierForm, BillForm, DrugForm, AppointmentForm, PrescriptionForm
-
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.urls import reverse_lazy
 
+@login_required(login_url="/login/")
 def index(request):
     return render(request, "index.html")
 

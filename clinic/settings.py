@@ -42,8 +42,6 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'api',
-    'corsheaders',
-    'birthday',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -142,3 +140,5 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
 
+LOGOUT_REDIRECT_URL = "/login/"
+LOGIN_REDIRECT_URL = "/index/"
